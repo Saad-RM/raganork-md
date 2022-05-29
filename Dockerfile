@@ -5,15 +5,10 @@ RUN apt-get update && \
   ffmpeg \
   imagemagick \
   webp && \
-  apt-get upgrade -y && \
-  rm -rf /var/lib/apt/lists/*
+  apt-get upgrade -y
 
 COPY package.json .
 
-RUN npm install && npm install pm2 -g 
-
-COPY . .
-
-EXPOSE 5000
+RUN npm install
 
 CMD ["npm", "start"]
